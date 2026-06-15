@@ -1,0 +1,265 @@
+/* --- Базовые настройки страницы --- */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f6f6f6; /* Светлый фон для самой страницы, чтобы карточки выделялись */
+  color: #242424;
+}
+
+/* Обертка с градиентом, если вы хотите оставить темный фон из прошлого примера */
+.wrapper {
+  background: linear-gradient(
+    177deg,
+    rgba(2, 0, 36, 1) 14%,
+    rgba(9, 9, 121, 1) 47%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  width: 100%;
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Стили заголовка вне градиента */
+.navigation-top {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.back-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* --- Секция Популярное --- */
+.trending h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.trending .see-all {
+  color: #ffffff;
+  float: right;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+/* --- СЕТКА В СТИЛЕ WILDBERRIES (CSS Grid) --- */
+.trending--items {
+  display: grid;
+  /* Ровные колонки, минимум 280px. На ПК встанут в один ряд, на телефонах — друг под друга */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- КАРТОЧКА ТОВАРА --- */
+.item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* ВСЕ карточки в ряду будут строго одной высоты */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Фиксированная коробка для фото (Секрет одинакового размера) */
+.item__image-wrapper {
+  width: 100%;
+  height: 350px; /* Строгая высота контейнера для фото */
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Умное масштабирование картинки внутри коробки */
+.item__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Фото подгоняется под размер без искажений и обрезки */
+  object-position: center;
+  display: block;
+}
+
+/* Текстовая информация */
+.item__info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Заставляет блок растягиваться, толкая кнопку вниз */
+}
+
+.item__info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 10px 0;
+}
+
+.item__info .price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 15px 0;
+  margin-top: auto; /* Прижимает цену и кнопку к самому низу карточки */
+}
+
+/* Фирменная кнопка "Купить" */
+.item .btn {
+  width: 100%;
+  background-color: #0d004f; /* Тот самый фиолетовый WB */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.item .btn:hover {
+  background-color: #0073ff;
+}
+.trending .see-all {
+  color: rgb(0, 14, 63);
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 12px 20px;
+  float: right;
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  transition: all 500ms ease;
+}
+
+.trending .see-all:hover {
+  transform: scale(1.1);
+}
+/* Фоновое затемнение на весь экран */
+.modal {
+  display: none; /* По умолчанию прячем окно */
+  position: fixed;
+  z-index: 9999; /* Чтобы окно было поверх вообще всего кода */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Темный полупрозрачный фон */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px); /* Легкое размытие заднего плана */
+}
+
+/* Настройки размеров и внешнего вида самого окошка */
+.modal-content {
+  background-color: #161a36; /* Темно-синий цвет под тему вашего сайта */
+  color: #ffffff;
+  margin: 10% auto; /* Отступ сверху от края экрана */
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #2c325c;
+
+  /* Жестко контролируем РАЗМЕР окна */
+  width: 90%;
+  max-width: 400px; /* Окно не растянется шире 400 пикселей */
+  box-sizing: border-box;
+
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Кнопка-крестик (закрыть) */
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #a0a5c1;
+  transition: color 0.2s;
+}
+.close-button:hover {
+  color: #fff;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* Оформление полей ввода */
+.form-group {
+  margin-bottom: 18px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #b0b5d4;
+}
+.form-group input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 6px;
+  border: 1px solid #2c325c;
+  background-color: #0b0e22;
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+/* Эффект при клике в поле ввода */
+.form-group input:focus {
+  border-color: #5856d6;
+}
+
+/* Кнопка внутри модального окна */
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: #211363; /* Ваш фиолетовый цвет кнопки */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+.submit-btn:hover {
+  background: #311b92; /* Слегка светлее при наведении */
+}

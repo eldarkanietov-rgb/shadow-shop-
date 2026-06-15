@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Одежда — Shadow Shop</title>
+    <link rel="stylesheet" href="css/menu.css" />
+    <style>
+      .navigation-top {
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navigation-top__title {
+        margin: 0;
+        color: #fff;
+        font-size: 32px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .navigation-top__back {
+        padding: 10px 20px;
+        border-radius: 6px;
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .trending__title {
+        color: #fff;
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container navigation-top">
+        <h1 class="navigation-top__title">Одежда</h1>
+        <button
+          onclick="window.location.href = '/'"
+          class="navigation-top__back"
+        >
+          Назад
+        </button>
+      </div>
+
+      <div class="container trending">
+        <a
+          href="https://t.me/shadow_shop12637"
+          target="_blank"
+          rel="noopener"
+          class="see-all"
+          >Смотреть все</a
+        >
+        <h3 class="trending__title">Популярные товары</h3>
+
+        <div class="trending--items">
+          <div class="item">
+            <div class="item__image-wrapper">
+              <img
+                src="https://cdn.clothbase.com/uploads/52981b70-96b3-4228-a3ac-cc50aec4c6bd/010111981503_12.jpg"
+                alt="Свитер"
+              />
+            </div>
+            <div class="item__info">
+              <h4>Свитер Gucci</h4>
+              <p class="price">2000 сом</p>
+              <button class="btn">Купить</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item__image-wrapper">
+              <img
+                src="https://basket-19.wbbasket.ru/vol3082/part308248/308248912/images/big/1.webp"
+                alt="Джинсы"
+              />
+            </div>
+            <div class="item__info">
+              <h4>Джинсы Purple</h4>
+              <p class="price">2000 сом</p>
+              <button class="btn">Купить</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item__image-wrapper">
+              <img
+                src="https://moncler-cdn.thron.com/api/v1/content-delivery/shares/dpx6uv/contents/K20931A0010368950999_F/image/parana-hooded-short-down-jacket-women-black-moncler-2.jpg?w=1300&q=80"
+                alt="Куртка"
+              />
+            </div>
+            <div class="item__info">
+              <h4>Куртка Moncler</h4>
+              <p class="price">3000 сом</p>
+              <button class="btn">Купить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="orderModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Оформление заказа</h3>
+        <form id="orderForm">
+          <div class="form-group">
+            <label>ФИО получателя</label>
+            <input
+              type="text"
+              id="fullName"
+              required
+              placeholder="Иванов Иван Иванович"
+            />
+          </div>
+          <div class="form-group">
+            <label>Город</label>
+            <input type="text" id="city" required placeholder="Бишкек" />
+          </div>
+          <div class="form-group">
+            <label>Адрес доставки</label>
+            <input
+              type="text"
+              id="address"
+              required
+              placeholder="Улица, дом, квартира"
+            />
+          </div>
+          <div class="form-group">
+            <label>Номер телефона</label>
+            <input
+              type="tel"
+              id="phone"
+              required
+              placeholder="+996 (___) __-__-__"
+            />
+          </div>
+          <button type="submit" class="submit-btn">Подтвердить заказ</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    // Ждем загрузки DOM, чтобы скрипт точно увидел все элементы
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("orderModal");
+      const closeBtn = document.querySelector(".close-button");
+      const orderForm = document.getElementById("orderForm");
+
+      // Находим ВСЕ кнопки с классом "btn" (Купить)
+      const buyButtons = document.querySelectorAll(".btn");
+
+      // Навешиваем открытие окна на каждую кнопку "Купить"
+      buyButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault(); // Чтобы страница не прыгала вверх
+          modal.style.display = "block"; // Показываем окно
+        });
+      });
+
+      // Закрытие на крестик
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      // Закрытие при клике на темный фон вокруг окна
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      // Действие при нажатии на кнопку "Подтвердить заказ"
+      orderForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("fullName").value;
+        alert(`Спасибо за заказ, ${name}! Данные успешно приняты.`);
+
+        orderForm.reset(); // Очищаем поля формы
+        modal.style.display = "none"; // Закрываем окно
+      });
+    });
+  </script>
+</html>

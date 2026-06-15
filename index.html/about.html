@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>О нас — Shadow Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(
+          177deg,
+          rgba(2, 0, 36, 1) 14%,
+          rgba(9, 9, 121, 1) 47%,
+          rgba(0, 212, 255, 1) 100%
+        );
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        color: white;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.07);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 500px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        color: #00d4ff;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: justify;
+        margin-bottom: 25px;
+      }
+      .back-btn {
+        background-color: #00d4ff;
+        color: #020024;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>О магазине SHADOW SHOP</h2>
+      <p>
+        Мы — концептуальный онлайн-магазин трендовой одежды и аксессуаров. Наша
+        цель — привозить исключительно стильные новинки высокого качества для
+        тех, кто ценит уникальный стиль.
+      </p>
+      <p>
+        Внимание: мы работаем в формате дропов. В связи с быстрой раскупаемостью
+        товаров и логистикой, у нас отсутствует возврат или обмен. Перед заказом
+        внимательно сверяйте ваши размеры с нашей размерной сеткой у менеджера.
+      </p>
+      <button class="back-btn" onclick="window.location.href = '/'">
+        Назад
+      </button>
+    </div>
+  </body>
+</html>

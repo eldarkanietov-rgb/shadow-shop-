@@ -1,0 +1,157 @@
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 200%;
+}
+
+.wrapper {
+  background: #020024;
+  background: linear-gradient(
+    177deg,
+    rgba(2, 0, 36, 1) 14%,
+    rgba(9, 9, 121, 1) 47%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  width: 100%;
+}
+
+.container {
+  width: 95%;
+  margin: 50px auto;
+}
+
+header {
+  padding: 20px 0;
+}
+header .logo {
+  text-transform: uppercase;
+  font-size: 29px;
+  font-weight: 800;
+}
+
+header nav {
+  float: right;
+  width: 50%;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+header nav ul li {
+  display: inline-block;
+}
+header nav ul li a {
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+header nav ul li:not(.activate):not(.btn) a:hover {
+  border-bottom: 2px solid #00b3ff;
+}
+
+header nav ul li.activate::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 5px;
+  background-color: #0091ff;
+  border-radius: 5px;
+  position: relative;
+  top: 10px;
+  left: -3px;
+}
+
+header nav ul li.btn a {
+  background-color: #00aaff;
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: all 500ms ease;
+}
+
+header nav ul li.btn a:hover {
+  background-color: #00ddff;
+}
+
+.hero {
+  padding-bottom: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero--info {
+  width: 530px;
+  padding-top: 70px;
+}
+.hero--info h2 {
+  color: rgb(0, 166, 255);
+  font-size: 25px;
+  font-weight: 500;
+  padding: 0 0 20px;
+}
+.hero--info h1 {
+  font-size: 85px;
+  font-weight: 500;
+  font-weight: bold;
+  line-height: 80px;
+}
+.hero--info p {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 20px 0;
+}
+.hero--info .btn {
+  background-color: #00b3ff;
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: all 500ms ease;
+  border: 0;
+  font: 25px;
+}
+.hero--info .btn:hover {
+  background-color: #00e5ff;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.hero img {
+  position: absolute;
+  right: 0;
+  top: -100px;
+}
+
+.hero--info {
+  width: 30%;
+  height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 20px;
+
+  position: relative;
+}
